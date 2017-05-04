@@ -8,9 +8,9 @@
 a.	Input file: train_test.csv
 b.	Output file: train.csv, evaluate.csv
 
-## Variables to enter:
-Randomize the division of data: yes/no, if selected yes ‘y’, enter any number greater than 0
-Training data fraction: any fraction between 0-1 (e.g 0.8 divides the data into 80% training and 20% evaluation samples)
+   ### Variables to enter:
+   Randomize the division of data: yes/no, if selected yes ‘y’, enter any number greater than 0
+   Training data fraction: any fraction between 0-1 (e.g 0.8 divides the data into 80% training and 20% evaluation samples)
 
 2.	To inflate data by creating duplicates, Run script “InflateAndSampleData.py”.
 a.	Input file: train.csv
