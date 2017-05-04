@@ -57,7 +57,7 @@ Run Script “trainModel.py”
 a.	Input file: train.csv
 b.	Output file: Model & Data Pickles to be used to predictions (Model & PickleJar folder)
 
-## Once the file is executed user is prompted to enter following options:
+## Once the trainModel file is executed user is prompted to enter following options:
 1.	Train new Model or Continue training previously trained Model:
 To continue training using the previously trained Model, enter “y” in the console. To train new model enter “n”
 2.	Number of Epochs
