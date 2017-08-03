@@ -53,7 +53,6 @@ class Model:
         # create the model
         embedding_vector_length = settings['EMBEDDING_VECTOR_LENGTH']
         self.model = Sequential()
-        # self.model.add(Dropout(0.2, input_shape=(self.max_words_limit,)))
         self.model.add(Embedding(self.top_words, embedding_vector_length, input_length=self.max_words_limit))
         self.model.add(Convolution1D(nb_filter=settings['CNN_NO_OF_FILTER'], filter_length=settings['CNN_FILTER_LENGTH'], border_mode='same', activation='relu'))
         self.model.add(MaxPooling1D(pool_length=settings['CNN_POOL_LENGTH']))
@@ -76,7 +75,6 @@ class Model:
         # fix random seed for reproducibility
         numpy.random.seed(7)
         # truncate and pad input sequences
-        # max_words_limit = 500
         X_train = sequence.pad_sequences(self.X_train, maxlen=self.max_words_limit)
         X_test = sequence.pad_sequences(self.X_test, maxlen=self.max_words_limit)
 
@@ -105,11 +103,6 @@ class Model:
                 print('Saved stats to file', ROOT_PATH + "\\Data\\stats.csv")
             except:
                 print("Couldn't save stats...")
-        # self.model.fit(X_train, Y_train, nb_epoch=self.EPOCHS, batch_size=self.batch_size)
-        # # Final evaluation of the model
-        # scores = self.model.evaluate(X_test, Y_test, verbose=0)
-        # self.accuracy = (scores[1] * 100)
-        # print("\nAccuracy: %.2f%%" % (scores[1] * 100))
 
     def compile(self):
         self.model.compile(loss='categorical_crossentropy', optimizer=self.optimizer, metrics=['accuracy'])

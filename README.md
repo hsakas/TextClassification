@@ -1,5 +1,9 @@
 # Instructions
 
+Run the model in command prompt using:
+python trainModel.py
+python predictModel.py
+
 ## Load Project
 1.	Open Project in PyCharm IDE & Set project interpreter as Anaconda
 

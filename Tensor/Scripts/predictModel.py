@@ -54,7 +54,6 @@ le = DataHandler.load_pickle(ROOT_PATH + '\\Data\\PickleJar\\' + le_file_name + 
 predicted_classes = le.inverse_transform(predicted_classes)
 
 # save data
-# out_df = pd.DataFrame(columns=['PREDICTION', 'SCORE'])
 test_df['PREDICTION'] = pd.Series(predicted_classes)
 test_df['SCORE'] = pd.Series(scores)
 

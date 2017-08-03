@@ -73,7 +73,6 @@ evaluate_df.dropna(inplace=True)
 # set all clusters to 0
 primary_df['CLUSTER'] = 0
 evaluate_df['CLUSTER'] = 0
-# primary_df['CLASS'] = primary_df['NOUN'] + "|" + primary_df['MODIFIER']
 
 # load bow
 list_of_strings = primary_df['TEXT'].unique().tolist()
@@ -104,27 +103,23 @@ X_data, Y_data = DataHandler.load_indexed_data(primary_df, 'TEXT', 'CLASS_CODE',
 X_evaluate, Y_evaluate = DataHandler.load_indexed_data(evaluate_df, 'TEXT', 'CLASS_CODE',
                                                bow_size=top_words, bow=bow)
 X_train, Y_train = X_data, Y_data
-# print('--------------X---------------------------')
-# print(X_data)
-# print('--------------Y--------------------------')
-# print(Y_data)
 
 num_classes = np.max(Y_train) + 1
 
 # Train the model on new X, Y
-secondary_model = Model(X_train, Y_train, X_evaluate, Y_evaluate, top_words, max_words_limit, num_classes,
+classification_model = Model(X_train, Y_train, X_evaluate, Y_evaluate, top_words, max_words_limit, num_classes,
                         EPOCHS, batch_size, model_id)
 
 if not REVIVE:
-    secondary_model.build()
-    secondary_model.compile()
+    classification_model.build()
+    classification_model.compile()
 else:
-    secondary_model.revive()
+    classification_model.revive()
 
-secondary_model.eval()
-secondary_model.save()
+classification_model.eval()
+classification_model.save()
 
-model_accuracy[model_id] = secondary_model.accuracy
+model_accuracy[model_id] = classification_model.accuracy
 
 # pickle the data
 DataHandler.pickle_data(model_accuracy, ROOT_PATH + '\\Data\\PickleJar\\accuracy.pkl')

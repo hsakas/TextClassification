@@ -123,7 +123,6 @@ def get_encoded_vector(list_of_words, new_string):
     if 'END_SEQ' not in list_of_words:
         list_of_words.append('END_SEQ')
 
-    # list_of_words += ['START_SEQ', 'UNKNOWN_WORDS', 'END_SEQ']
     tokens = text_to_word_sequence(new_string, lower=True, split=" ")
 
     # Stem and Lemmatize the data
